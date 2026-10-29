@@ -1281,7 +1281,11 @@ if ($isIntegrator) {
         $batchStmt = $conn->prepare("
             SELECT DISTINCT b.batch_id, b.batch_code, b.current_quantity, b.initial_quantity, b.target_weight_kg, b.current_weight_kg, b.arrival_date, b.house_pen, COALESCE(b.chick_unit_cost, 38.00) as chick_unit_cost 
             FROM batches b 
-            LEFT JOIN reservations r ON (b.batch_id = r.batch_id OR (r.house_id IS NOT NULL AND b.house_pen = (SELECT house_name FROM houses WHERE house_id = r.house_id LIMIT 1)))
+            LEFT JOIN (
+                SELECT res.batch_id, res.customer_id, res.created_by, h.house_name
+                FROM reservations res
+                LEFT JOIN houses h ON res.house_id = h.house_id
+            ) r ON (b.batch_id = r.batch_id OR (b.house_pen IS NOT NULL AND b.house_pen = r.house_name))
             WHERE b.status = 'active'
               AND ((? > 0 AND r.customer_id = ?) OR r.created_by = ? OR b.supplier LIKE ?)
             ORDER BY b.batch_code ASC
@@ -1291,7 +1295,11 @@ if ($isIntegrator) {
         $batchStmt = $conn->prepare("
             SELECT DISTINCT b.batch_id, b.batch_code, b.current_quantity, b.initial_quantity, b.target_weight_kg, b.current_weight_kg, b.arrival_date, b.house_pen, COALESCE(b.chick_unit_cost, 38.00) as chick_unit_cost 
             FROM batches b 
-            LEFT JOIN reservations r ON (b.batch_id = r.batch_id OR (r.house_id IS NOT NULL AND b.house_pen = (SELECT house_name FROM houses WHERE house_id = r.house_id LIMIT 1)))
+            LEFT JOIN (
+                SELECT res.batch_id, res.customer_id, res.created_by, h.house_name
+                FROM reservations res
+                LEFT JOIN houses h ON res.house_id = h.house_id
+            ) r ON (b.batch_id = r.batch_id OR (b.house_pen IS NOT NULL AND b.house_pen = r.house_name))
             WHERE b.status = 'active'
               AND ((? > 0 AND r.customer_id = ?) OR r.created_by = ?)
             ORDER BY b.batch_code ASC
