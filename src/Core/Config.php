@@ -12,6 +12,7 @@ class Config {
         // Default configurations
         self::$config = [
             'DB_HOST' => 'localhost',
+            'DB_PORT' => '3306',
             'DB_NAME' => 'poultry_db',
             'DB_USER' => 'root',
             'DB_PASS' => '',
@@ -42,6 +43,13 @@ class Config {
 
     public static function get(string $key, mixed $default = null): mixed {
         self::load();
-        return self::$config[$key] ?? (getenv($key) ?: $default);
+        $envVal = getenv($key);
+        if ($envVal !== false && $envVal !== '') {
+            return $envVal;
+        }
+        if (isset($_ENV[$key]) && $_ENV[$key] !== '') {
+            return $_ENV[$key];
+        }
+        return self::$config[$key] ?? $default;
     }
 }

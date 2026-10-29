@@ -10,17 +10,22 @@ class Database {
 
     private function __construct() {
         $host = Config::get('DB_HOST', 'localhost');
+        $port = Config::get('DB_PORT', '3306');
         $dbName = Config::get('DB_NAME', 'poultry_db');
         $user = Config::get('DB_USER', 'root');
         $pass = Config::get('DB_PASS', '');
 
         try {
-            $dsn = "mysql:host={$host};dbname={$dbName};charset=utf8mb4";
+            $dsn = "mysql:host={$host};port={$port};dbname={$dbName};charset=utf8mb4";
             $options = [
                 PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
                 PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
                 PDO::ATTR_EMULATE_PREPARES => false,
             ];
+            if ($host !== 'localhost' && $host !== '127.0.0.1') {
+                $options[PDO::MYSQL_ATTR_SSL_CA] = true;
+                $options[PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT] = false;
+            }
             if (date_default_timezone_get() !== 'Asia/Manila') {
                 date_default_timezone_set('Asia/Manila');
             }

@@ -4,3 +4,4 @@ tests/
 scratch/
 laravel/
 database/*.sql
+
