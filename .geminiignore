@@ -1,0 +1,22 @@
+# AI Context Optimization Ignore Rules for PoultryCare
+
+# Database Backups & Snapshots
+database/backup/
+database/backup_before_cleanup.sql
+*.sql.bak
+*.dump
+
+# Temporary Logs & CLI Outputs
+*.log
+lint*.txt
+*out.txt
+scratch*.txt
+
+# Static Documentation & Specifications
+docs/
+
+# IDE & OS Files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

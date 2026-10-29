@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Dictionary — San Isidro Poultry Farm</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background-color: #f8f9fa;
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+            margin-bottom: 50px;
+        }
+        .table-container {
+            background-color: #fff;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 40px;
+        }
+        .table-header {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #e9ecef;
+            padding: 10px 15px;
+            border-radius: 4px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 10px;
+        }
+        th, td {
+            border: 1px solid #dee2e6;
+            padding: 12px;
+            text-align: left;
+            font-size: 0.9rem;
+        }
+        th {
+            background-color: #3498db;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .table-caption {
+            font-style: italic;
+            font-size: 0.85rem;
+            color: #6c757d;
+            text-align: center;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Data Dictionary: Poultry Workflow & Resource Management System</h1>
+
+    <!-- 1. Activities Table -->
+    <div class="table-container">
+        <div class="table-header">
+            <span>Activities (activities)</span>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Column</th>
+                    <th>Type</th>
+                    <th>Null</th>
+                    <th>Default</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>activity_id</td>
+                    <td>int(11)</td>
+                    <td>No</td>
+                    <td></td>
+                    <td>Id of the activity</td>
+                </tr>
+                <tr>
+                    <td>batch_id</td>
+                    <td>int(11)</td>
+                    <td>Yes</td>
+                    <td>NULL</td>
+                    <td>Id of the batch</td>
+                </tr>
+                <tr>
+                    <td>type</td>
+                    <td>enum('Feeding', 'Health', 'Cleaning', 'Supply')</td>
+                    <td>No</td>
+                    <td></td>
+                    <td>Category of the activity</td>
+                </tr>
+                <tr>
+                    <td>item_name</td>
+                    <td>varchar(100)</td>
+                    <td>Yes</td>
+                    <td>NULL</td>
+                    <td>Name of the item</td>
+                </tr>
+                <tr>
+                    <td>quantity</td>
+                    <td>decimal(10,2)</td>
+                    <td>Yes</td>
+                    <td>NULL</td>
+                    <td>Quantity of the item</td>
+                </tr>
+                <tr>
+                    <td>date</td>
+                    <td>date</td>
+                    <td>No</td>
+                    <td></td>
+                    <td>Date of the activity</td>
+                </tr>
+                <tr>
+                    <td>remarks</td>
+                    <td>text</td>
+                    <td>Yes</td>
+                    <td>NULL</td>
+                    <td>Note of the activity</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="table-caption">Table 3.1: Activities Table of Poultry Workflow & Resource Management System.</div>
+    </div>
+
+    <!-- 2. Batches Table -->
+    <div class="table-container">
+        <div class="table-header">
+            <span>Batches (batches)</span>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Column</th>
+                    <th>Type</th>
+                    <th>Null</th>
+                    <th>Default</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>batch_id</td>
+                    <td>int(11)</td>
+                    <td>No</td>
+                    <td></td>
+                    <td>Id of the batch</td>
+                </tr>
+                <tr>
+                    <td>batch_code</td>
+                    <td>varchar(50)</td>
+                    <td>Yes</td>
+                    <td>NULL</td>
+                    <td>Code of the batch</td>
+                </tr>
+                <tr>
+                    <td>arrival_date</td>
+                    <td>date</td>
+                    <td>Yes</td>
+                    <td>NULL</td>
+                    <td>Date of the arrival</td>
+                </tr>
+                <tr>
+                    <td>initial_quantity</td>
+                    <td>int(11)</td>
+                    <td>Yes</td>
+                    <td>NULL</td>
+                    <td>Start quantity of the batch</td>
+                </tr>
+                <tr>
+                    <td>current_quantity</td>
+                    <td>int(11)</td>
+                    <td>Yes</td>
+                    <td>NULL</td>
+                    <td>Now quantity of the batch</td>
+                </tr>
+                <tr>
+                    <td>supplier</td>
+                    <td>varchar(100)</td>
+                    <td>Yes</td>
+                    <td>NULL</td>
+                    <td>Name of the supplier</td>
+                </tr>
+                <tr>
+                    <td>status</td>
+                    <td>enum('active', 'harvested')</td>
+                    <td>Yes</td>
+                    <td>active</td>
+                    <td>Status of the batch</td>
+                </tr>
+                <tr>
+                    <td>created_at</td>
+                    <td>timestamp</td>
+                    <td>No</td>
+                    <td>current_timestamp()</td>
+                    <td>Create of the batch</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="table-caption">Table 3.2: Batches Table of Poultry Workflow & Resource Management System.</div>
+    </div>
+
+    <!-- 3. Cleaning Records Table -->
+    <div class="table-container">
+        <div class="table-header">
+            <span>Cleaning Records (cleaning_records)</span>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Column</th>
+                    <th>Type</th>
+                    <th>Null</th>
+                    <th>Default</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>cleaning_id</td>
+                    <td>int(11)</td>
+                    <td>No</td>
+                    <td></td>
+                    <td>Id of the cleaning</td>
+                </tr>
+                <tr>
+                    <td>batch_id</td>
+                    <td>int(11)</td>
+                    <td>Yes</td>
+                    <td>NULL</td>
+                    <td>Id of the batch</td>
+                </tr>
+                <tr>
+                    <td>date</td>
+                    <td>date</td>
+                    <td>No</td>
+                    <td></td>
+                    <td>Date of the cleaning</td>
+                </tr>
+                <tr>
+                    <td>remarks</td>
+                    <td>text</td>
+                    <td>Yes</td>
+                    <td>NULL</td>
+                    <td>Note of the cleaning</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="table-caption">Table 3.3: Cleaning Records Table of Poultry Workflow & Resource Management System.</div>
+    </div>
+
+    <!-- 4. Expenses Table -->
+    <div class="table-container">
+        <div class="table-header">
+            <span>Expenses (expenses)</span>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Column</th>
+                    <th>Type</th>
+                    <th>Null</th>
+                    <th>Default</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>expense_id</td>
+                    <td>int(11)</td>
+                    <td>No</td>
+                    <td></td>
+                    <td>Id of the expense</td>
+                </tr>
+                <tr>
+                    <td>batch_id</td>
+                    <td>int(11)</td>
+                    <td>Yes</td>
+                    <td>NULL</td>
+                    <td>Id of the batch</td>
+                </tr>
+                <tr>
+                    <td>category</td>
+                    <td>enum('feed', 'medicine', 'other')</td>
+                    <td>Yes</td>
+                    <td>NULL</td>
+                    <td>Category of the expense</td>
+                </tr>
+                <tr>
+                    <td>amount</td>
+                    <td>decimal(10,2)</td>
+                    <td>Yes</td>
+                    <td>NULL</td>
+                    <td>Cost of the expense</td>
+                </tr>
+                <tr>
+                    <td>description</td>
+                    <td>varchar(255)</td>
+                    <td>Yes</td>
+                    <td>NULL</td>
+                    <td>Details of the expense</td>
+                </tr>
+                <tr>
+                    <td>date</td>
+                    <td>date</td>
+                    <td>Yes</td>
+                    <td>NULL</td>
+                    <td>Date of the expense</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="table-caption">Table 3.4: Expenses Table of Poultry Workflow & Resource Management System.</div>
+    </div>
+
+    <!-- 5. Feed Consumption Table -->
+    <div class="table-container">
+        <div class="table-header">
+            <span>Feed Consumption (feed_consumption)</span>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Column</th>
+                    <th>Type</th>
+                    <th>Null</th>
+                    <th>Default</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>consumption_id</td>
+                    <td>int(11)</td>
+                    <td>No</td>
+                    <td></td>
+                    <td>Id of the consumption</td>
+                </tr>
+                <tr>
+                    <td>batch_id</td>
+                    <td>int(11)</td>
+                    <td>Yes</td>
+                    <td>NULL</td>
+                    <td>Id of the batch</td>
+                </tr>
+                <tr>
+                    <td>inventory_id</td>
+                    <td>int(11)</td>
+                    <td>Yes</td>
+                    <td>NULL</td>
+                    <td>Id of the inventory</td>
+                </tr>
+                <tr>
+                    <td>quantity_used</td>
+                    <td>decimal(10,2)</td>
+                    <td>Yes</td>
+                    <td>NULL</td>
+                    <td>Amount of the feed</td>
+                </tr>
+                <tr>
+                    <td>date</td>
+                    <td>date</td>
+                    <td>No</td>
+                    <td></td>
+                    <td>Date of the consumption</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="table-caption">Table 3.5: Feed Consumption Table of Poultry Workflow & Resource Management System.</div>
+    </div>
+
+    <!-- 6. Health Records Table -->
+    <div class="table-container">
+        <div class="table-header">
+            <span>Health Records (health_records)</span>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Column</th>
+                    <th>Type</th>
+                    <th>Null</th>
+                    <th>Default</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>health_id</td>
+                    <td>int(11)</td>
+                    <td>No</td>
+                    <td></td>
+                    <td>Id of the health</td>
+                </tr>
+                <tr>
+                    <td>batch_id</td>
+                    <td>int(11)</td>
+                    <td>Yes</td>
+                    <td>NULL</td>
+                    <td>Id of the batch</td>
+                </tr>
+                <tr>
+                    <td>type</td>
+                    <td>enum('vaccination', 'treatment')</td>
+                    <td>Yes</td>
+                    <td>NULL</td>
+                    <td>Type of the health</td>
+                </tr>
+                <tr>
+                    <td>medicine_name</td>
+                    <td>varchar(100)</td>
+                    <td>Yes</td>
+                    <td>NULL</td>
+                    <td>Name of the medicine</td>
+                </tr>
+                <tr>
+                    <td>quantity_used</td>
+                    <td>int(11)</td>
+                    <td>Yes</td>
+                    <td>NULL</td>
+                    <td>Amount of the medicine</td>
+                </tr>
+                <tr>
+                    <td>date</td>
+                    <td>date</td>
+                    <td>Yes</td>
+                    <td>NULL</td>
+                    <td>Date of the health</td>
+                </tr>
+                <tr>
+                    <td>notes</td>
+                    <td>text</td>
+                    <td>Yes</td>
+                    <td>NULL</td>
+                    <td>Note of the health</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="table-caption">Table 3.6: Health Records Table of Poultry Workflow & Resource Management System.</div>
+    </div>
+
+    <!-- 7. Inventory Table -->
+    <div class="table-container">
+        <div class="table-header">
+            <span>Inventory (inventory)</span>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Column</th>
+                    <th>Type</th>
+                    <th>Null</th>
+                    <th>Default</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>inventory_id</td>
+                    <td>int(11)</td>
+                    <td>No</td>
+                    <td></td>
+                    <td>Id of the inventory</td>
+                </tr>
+                <tr>
+                    <td>item_name</td>
+                    <td>varchar(100)</td>
+                    <td>No</td>
+                    <td></td>
+                    <td>Name of the item</td>
+                </tr>
+                <tr>
+                    <td>category</td>
+                    <td>enum('feed', 'medicine', 'supply')</td>
+                    <td>No</td>
+                    <td></td>
+                    <td>Category of the item</td>
+                </tr>
+                <tr>
+                    <td>quantity</td>
+                    <td>decimal(10,2)</td>
+                    <td>No</td>
+                    <td></td>
+                    <td>Quantity of the item</td>
+                </tr>
+                <tr>
+                    <td>unit</td>
+                    <td>varchar(20)</td>
+                    <td>Yes</td>
+                    <td>NULL</td>
+                    <td>Unit of the item</td>
+                </tr>
+                <tr>
+                    <td>unit_cost</td>
+                    <td>decimal(10,2)</td>
+                    <td>Yes</td>
+                    <td>NULL</td>
+                    <td>Cost of the item</td>
+                </tr>
+                <tr>
+                    <td>previous_quantity</td>
+                    <td>decimal(10,2)</td>
+                    <td>Yes</td>
+                    <td>0.00</td>
+                    <td>Old quantity of the item</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="table-caption">Table 3.7: Inventory Table of Poultry Workflow & Resource Management System.</div>
+    </div>
+
+    <!-- 8. Mortality Records Table -->
+    <div class="table-container">
+        <div class="table-header">
+            <span>Mortality Records (mortality_records)</span>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Column</th>
+                    <th>Type</th>
+                    <th>Null</th>
+                    <th>Default</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>mortality_id</td>
+                    <td>int(11)</td>
+                    <td>No</td>
+                    <td></td>
+                    <td>Id of the mortality</td>
+                </tr>
+                <tr>
+                    <td>batch_id</td>
+                    <td>int(11)</td>
+                    <td>Yes</td>
+                    <td>NULL</td>
+                    <td>Id of the batch</td>
+                </tr>
+                <tr>
+                    <td>date</td>
+                    <td>date</td>
+                    <td>No</td>
+                    <td></td>
+                    <td>Date of the mortality</td>
+                </tr>
+                <tr>
+                    <td>quantity_change</td>
+                    <td>int(11)</td>
+                    <td>No</td>
+                    <td></td>
+                    <td>Number of the loss</td>
+                </tr>
+                <tr>
+                    <td>reason</td>
+                    <td>varchar(255)</td>
+                    <td>Yes</td>
+                    <td>NULL</td>
+                    <td>Reason of the mortality</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="table-caption">Table 3.8: Mortality Records Table of Poultry Workflow & Resource Management System.</div>
+    </div>
+
+    <!-- 9. Notifications Table -->
+    <div class="table-container">
+        <div class="table-header">
+            <span>Notifications (notifications)</span>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Column</th>
+                    <th>Type</th>
+                    <th>Null</th>
+                    <th>Default</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>notification_id</td>
+                    <td>int(11)</td>
+                    <td>No</td>
+                    <td></td>
+                    <td>Id of the notification</td>
+                </tr>
+                <tr>
+                    <td>message</td>
+                    <td>varchar(255)</td>
+                    <td>Yes</td>
+                    <td>NULL</td>
+                    <td>Text of the notification</td>
+                </tr>
+                <tr>
+                    <td>type</td>
+                    <td>enum('low_stock', 'vaccination', 'general')</td>
+                    <td>Yes</td>
+                    <td>NULL</td>
+                    <td>Type of the notification</td>
+                </tr>
+                <tr>
+                    <td>status</td>
+                    <td>enum('unread', 'read')</td>
+                    <td>Yes</td>
+                    <td>unread</td>
+                    <td>Status of the notification</td>
+                </tr>
+                <tr>
+                    <td>created_at</td>
+                    <td>timestamp</td>
+                    <td>No</td>
+                    <td>current_timestamp()</td>
+                    <td>Create of the notification</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="table-caption">Table 3.9: Notifications Table of Poultry Workflow & Resource Management System.</div>
+    </div>
+
+    <!-- 10. Sales Table -->
+    <div class="table-container">
+        <div class="table-header">
+            <span>Sales (sales)</span>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Column</th>
+                    <th>Type</th>
+                    <th>Null</th>
+                    <th>Default</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>sale_id</td>
+                    <td>int(11)</td>
+                    <td>No</td>
+                    <td></td>
+                    <td>Id of the sale</td>
+                </tr>
+                <tr>
+                    <td>batch_id</td>
+                    <td>int(11)</td>
+                    <td>Yes</td>
+                    <td>NULL</td>
+                    <td>Id of the batch</td>
+                </tr>
+                <tr>
+                    <td>date</td>
+                    <td>date</td>
+                    <td>Yes</td>
+                    <td>NULL</td>
+                    <td>Date of the sale</td>
+                </tr>
+                <tr>
+                    <td>total_chickens</td>
+                    <td>int(11)</td>
+                    <td>Yes</td>
+                    <td>NULL</td>
+                    <td>Number of the sale</td>
+                </tr>
+                <tr>
+                    <td>total_weight</td>
+                    <td>decimal(10,2)</td>
+                    <td>Yes</td>
+                    <td>NULL</td>
+                    <td>Weight of the sale</td>
+                </tr>
+                <tr>
+                    <td>price_per_kg</td>
+                    <td>decimal(10,2)</td>
+                    <td>Yes</td>
+                    <td>NULL</td>
+                    <td>Price of the sale</td>
+                </tr>
+                <tr>
+                    <td>total_revenue</td>
+                    <td>decimal(10,2)</td>
+                    <td>Yes</td>
+                    <td>NULL</td>
+                    <td>Money of the sale</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="table-caption">Table 3.10: Sales Table of Poultry Workflow & Resource Management System.</div>
+    </div>
+
+    <!-- 11. Tasks Table -->
+    <div class="table-container">
+        <div class="table-header">
+            <span>Tasks (tasks)</span>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Column</th>
+                    <th>Type</th>
+                    <th>Null</th>
+                    <th>Default</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>task_id</td>
+                    <td>int(11)</td>
+                    <td>No</td>
+                    <td></td>
+                    <td>Id of the task</td>
+                </tr>
+                <tr>
+                    <td>title</td>
+                    <td>varchar(255)</td>
+                    <td>No</td>
+                    <td></td>
+                    <td>Title of the task</td>
+                </tr>
+                <tr>
+                    <td>description</td>
+                    <td>text</td>
+                    <td>Yes</td>
+                    <td>NULL</td>
+                    <td>Note of the task</td>
+                </tr>
+                <tr>
+                    <td>assigned_to</td>
+                    <td>int(11)</td>
+                    <td>Yes</td>
+                    <td>NULL</td>
+                    <td>Person of the task</td>
+                </tr>
+                <tr>
+                    <td>created_by</td>
+                    <td>int(11)</td>
+                    <td>Yes</td>
+                    <td>NULL</td>
+                    <td>Admin of the task</td>
+                </tr>
+                <tr>
+                    <td>due_date</td>
+                    <td>date</td>
+                    <td>Yes</td>
+                    <td>NULL</td>
+                    <td>Date of the task</td>
+                </tr>
+                <tr>
+                    <td>status</td>
+                    <td>enum('pending', 'in_progress', 'completed')</td>
+                    <td>Yes</td>
+                    <td>pending</td>
+                    <td>Status of the task</td>
+                </tr>
+                <tr>
+                    <td>created_at</td>
+                    <td>timestamp</td>
+                    <td>No</td>
+                    <td>current_timestamp()</td>
+                    <td>Create of the task</td>
+                </tr>
+                <tr>
+                    <td>batch_id</td>
+                    <td>int(11)</td>
+                    <td>Yes</td>
+                    <td>NULL</td>
+                    <td>Id of the batch</td>
+                </tr>
+                <tr>
+                    <td>task_type</td>
+                    <td>enum('daily', 'one_time')</td>
+                    <td>Yes</td>
+                    <td>one_time</td>
+                    <td>Type of the task</td>
+                </tr>
+                <tr>
+                    <td>last_reset_date</td>
+                    <td>date</td>
+                    <td>Yes</td>
+                    <td>NULL</td>
+                    <td>Reset of the task</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="table-caption">Table 3.11: Tasks Table of Poultry Workflow & Resource Management System.</div>
+    </div>
+
+    <!-- 12. Users Table -->
+    <div class="table-container">
+        <div class="table-header">
+            <span>Users (users)</span>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Column</th>
+                    <th>Type</th>
+                    <th>Null</th>
+                    <th>Default</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>user_id</td>
+                    <td>int(11)</td>
+                    <td>No</td>
+                    <td></td>
+                    <td>Id of the user</td>
+                </tr>
+                <tr>
+                    <td>username</td>
+                    <td>varchar(50)</td>
+                    <td>No</td>
+                    <td></td>
+                    <td>Name of the user</td>
+                </tr>
+                <tr>
+                    <td>password</td>
+                    <td>varchar(255)</td>
+                    <td>No</td>
+                    <td></td>
+                    <td>Password of the user</td>
+                </tr>
+                <tr>
+                    <td>full_name</td>
+                    <td>varchar(100)</td>
+                    <td>Yes</td>
+                    <td>NULL</td>
+                    <td>Fullname of the user</td>
+                </tr>
+                <tr>
+                    <td>role</td>
+                    <td>enum('admin', 'worker')</td>
+                    <td>No</td>
+                    <td>worker</td>
+                    <td>Role of the user</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="table-caption">Table 3.12: Users Table of Poultry Workflow & Resource Management System.</div>
+    </div>
+
+</body>
+</html>

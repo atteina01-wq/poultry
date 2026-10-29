@@ -1,0 +1,35 @@
+/* ==========================================================================
+   San Isidro Poultry Farm - Shared Brand Design Tokens & System CSS
+   ========================================================================== */
+
+:root {
+    /* Primary Brand Colors (Soft Slate/Blue-Gray) */
+    --brand-dark: #334155;
+    --brand-dark-header: #1e293b;
+    --brand-dark-footer: #0f172a;
+    --brand-dark-hover: #475569;
+    --brand-dark-deep: #0f172a;
+
+    /* Brand Accents (Soft Blue/Teal) */
+    --brand-accent-green: #3b82f6; /* Soft blue instead of green */
+    --brand-accent-green-hover: #2563eb;
+    --brand-accent-green-light: #60a5fa;
+    --brand-accent-green-subtle: rgba(59, 130, 246, 0.12);
+
+    /* Brand Warm Amber / Gold (Muted) */
+    --brand-accent-amber: #eab308;
+    --brand-accent-amber-dark: #ca8a04;
+    --brand-accent-amber-gradient: linear-gradient(135deg, #facc15 0%, #eab308 100%);
+
+    /* Backgrounds & Neutrals */
+    --brand-bg: #f8fafc;
+    --brand-card-bg: #ffffff;
+    --brand-text-dark: #1e293b;
+    --brand-text-muted: #64748b;
+    --brand-text-light: #f1f5f9;
+
+    /* Focus & Shadow States */
+    --brand-focus-ring: rgba(59, 130, 246, 0.25);
+    --brand-shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    --brand-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}

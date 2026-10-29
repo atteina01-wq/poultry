@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Model Canvas — San Isidro Poultry Farm</title>
+    <style>
+        :root {
+            --primary-bg: #fdfdfd;
+            --teal-bg: #76c7c0;
+            --orange-bg: #f9d58b;
+            --blue-bg: #91d8f2;
+            --text-color: #333;
+            --border-color: #000;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f0f0;
+            margin: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .canvas-container {
+            width: 1200px;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            grid-template-rows: auto auto auto;
+            border: 1px solid var(--border-color);
+            background-color: white;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .section {
+            border: 0.5px solid var(--border-color);
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .section-header {
+            font-weight: bold;
+            font-size: 1rem;
+            margin-bottom: 15px;
+            text-decoration: underline;
+        }
+
+        .item {
+            padding: 12px 10px;
+            border: 1px solid #333;
+            font-size: 0.9rem;
+            color: var(--text-color);
+            text-align: center;
+            min-height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1.2;
+        }
+
+        .item.teal { background-color: var(--teal-bg); }
+        .item.orange { background-color: var(--orange-bg); }
+        .item.blue { background-color: var(--blue-bg); }
+
+        /* Grid Layout Specifics */
+        .key-partners { grid-column: 1 / 2; grid-row: 1 / 3; }
+        .key-activities { grid-column: 2 / 3; grid-row: 1 / 2; }
+        .key-resources { grid-column: 2 / 3; grid-row: 2 / 3; }
+        .value-propositions { grid-column: 3 / 4; grid-row: 1 / 3; }
+        .customer-relationships { grid-column: 4 / 5; grid-row: 1 / 2; }
+        .channels { grid-column: 4 / 5; grid-row: 2 / 3; }
+        .customer-segments { grid-column: 5 / 6; grid-row: 1 / 3; }
+        
+        /* Bottom sections */
+        .cost-structure { grid-column: 1 / 3; grid-row: 3 / 4; }
+        .revenue-streams { grid-column: 3 / 6; grid-row: 3 / 4; }
+
+        .horizontal-box-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .horizontal-box-container .item {
+            flex: 1;
+            min-width: 140px;
+        }
+
+        h1 { margin-bottom: 20px; font-size: 2rem; color: #2c3e50; }
+    </style>
+</head>
+<body>
+
+    <h1>Business Model Canvas — San Isidro Poultry Farm</h1>
+
+    <div class="canvas-container">
+        <!-- Key Partners -->
+        <div class="section key-partners">
+            <div class="section-header">Key Partners</div>
+            <div class="item teal">Feed Suppliers & Nutritionists</div>
+            <div class="item teal">Veterinary Services & Clinics</div>
+            <div class="item teal">Day-Old Chick (DOC) Suppliers</div>
+            <div class="item teal">Poultry Equipment Vendors</div>
+            <div class="item teal">Government Agencies (DA/BAI)</div>
+        </div>
+
+        <!-- Key Activities -->
+        <div class="section key-activities">
+            <div class="section-header">Key Activities</div>
+            <div class="item teal">Real-time Batch Monitoring</div>
+            <div class="item teal">Health & Vaccination Scheduling</div>
+            <div class="item teal">Inventory & Feed Management</div>
+            <div class="item teal">Sales & Revenue Analysis</div>
+            <div class="item teal">Task Assignment & Workflow</div>
+        </div>
+
+        <!-- Key Resources -->
+        <div class="section key-resources">
+            <div class="section-header">Key Resources</div>
+            <div class="item teal">Poultry Management Software</div>
+            <div class="item teal">Cloud Infrastructure & Data</div>
+            <div class="item teal">Farm Records & Analytics</div>
+            <div class="item teal">Technical Support Team</div>
+            <div class="item teal">Domain Expertise (Poultry)</div>
+        </div>
+
+        <!-- Value Propositions -->
+        <div class="section value-propositions">
+            <div class="section-header">Value Propositions</div>
+            <div class="item orange">Digital Recording System for Resourses</div>
+            <div class="item orange">Batch & Mortality Tracking Module</div>
+            <div class="item blue">Inventory Management Feature</div>
+            <div class="item blue">Production Yield Reporting</div>
+            <div class="item blue">Expense Monitoring & financial tracking</div>
+            <div class="item blue">System Alert fora Mortality & low Stock</div>
+        </div>
+
+        <!-- Customer Relationships -->
+        <div class="section customer-relationships">
+            <div class="section-header">Customer Relationships</div>
+            <div class="item teal">Automated System Alerts</div>
+            <div class="item teal">User Training & Onboarding</div>
+            <div class="item teal">Technical Support Services</div>
+            <div class="item teal">Data Security & Reliability</div>
+        </div>
+
+        <!-- Channels -->
+        <div class="section channels">
+            <div class="section-header">Channels</div>
+            <div class="item teal">Web Dashboard (Desktop)</div>
+            <div class="item teal">Mobile/Tablet Interface</div>
+            <div class="item teal">Direct Customer Onboarding</div>
+        </div>
+
+        <!-- Customer Segments -->
+        <div class="section customer-segments">
+            <div class="section-header">Customer Segments</div>
+            <div class="item orange">Farm Owner</div>
+            <div class="item blue">Farm Worker</div>
+        </div>
+
+        <!-- Cost Structure -->
+        <div class="section cost-structure">
+            <div class="section-header">Cost Structure</div>
+            <div class="horizontal-box-container">
+                <div class="item teal">Software Dev & Maintenance</div>
+                <div class="item teal">Server & Cloud Hosting</div>
+                <div class="item teal">Customer Support Operations</div>
+                <div class="item teal">Marketing & Sales</div>
+                <div class="item teal">Security & Data Protection</div>
+            </div>
+        </div>
+
+        <!-- Revenue Streams -->
+        <div class="section revenue-streams">
+            <div class="section-header">Revenue Streams</div>
+            <div class="horizontal-box-container">
+                <div class="item teal">Subscription Licensing</div>
+                <div class="item teal">Implementation & Training</div>
+                <div class="item teal">Premium Analytics Features</div>
+                <div class="item teal">Custom Integration Services</div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,19 @@
+# Environment & Secrets
+.env
+
+# SQL Backups & Snapshots
+database/backup/
+*.sql.bak
+*.dump
+
+# Temporary & Output Files
+*.txt
+*.log
+
+# IDE & Tooling
+.vscode/
+.idea/
+
+# Vendor & Dependencies
+vendor/
+node_modules/

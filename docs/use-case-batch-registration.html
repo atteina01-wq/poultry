@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>San Isidro Poultry Farm — Use Case: Batch registration</title>
+  <link rel="stylesheet" href="css/use-case-spec.css">
+</head>
+<body>
+  <table class="spec-table">
+    <tbody>
+      <tr class="row-title">
+        <th class="label" scope="row">Use Case</th>
+        <td class="value">Batch registration</td>
+      </tr>
+      <tr>
+        <th class="label" scope="row">Author</th>
+        <td class="value">San Isidro Poultry Farm project team</td>
+      </tr>
+      <tr>
+        <th class="label" scope="row">Primary Actor</th>
+        <td class="value">Farm Owner</td>
+      </tr>
+      <tr>
+        <th class="label" scope="row">Trigger (Primary)</th>
+        <td class="value">A new flock arrives or a new production cycle must be opened in the system.</td>
+      </tr>
+      <tr>
+        <th class="label" scope="row">Basic Flow (Primary)</th>
+        <td class="value">
+          <ol>
+            <li>Admin signs in and opens batch registration.</li>
+            <li>Admin enters batch code, arrival date, initial head count, and supplier.</li>
+            <li>Admin submits the form.</li>
+            <li>The system adds the batch and shows it on the home batch list with current stock.</li>
+          </ol>
+        </td>
+      </tr>
+      <tr>
+        <th class="label" scope="row">Post Condition (Primary)</th>
+        <td class="value">The batch is stored and available for monitoring, activity logging, and related workflows.</td>
+      </tr>
+      <tr>
+        <th class="label" scope="row">Secondary Actor</th>
+        <td class="value">Farm Worker</td>
+      </tr>
+      <tr>
+        <th class="label" scope="row">Trigger (Secondary)</th>
+        <td class="value">Worker opens the home page or any screen that lists batches for daily work.</td>
+      </tr>
+      <tr>
+        <th class="label" scope="row">Basic Flow (Secondary)</th>
+        <td class="value">
+          <ol>
+            <li>Worker views the batch list (code, arrival date, stock, status).</li>
+            <li>Worker selects this batch when logging activities, mortality, or tasks tied to a batch.</li>
+          </ol>
+        </td>
+      </tr>
+      <tr>
+        <th class="label" scope="row">Post Condition (Secondary)</th>
+        <td class="value">Field work is linked to the registered batch; counts stay aligned with what the admin entered.</td>
+      </tr>
+    </tbody>
+  </table>
+</body>
+</html>

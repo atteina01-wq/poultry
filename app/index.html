@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poultry Farm Management System</title>
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+    <!-- AUTHENTICATION SCREEN -->
+    <div id="auth-screen" class="screen active">
+        <div class="auth-container glass-panel">
+            <div class="auth-header">
+                <i class="fas fa-egg text-accent" style="font-size: 2.5rem; margin-bottom: 1rem;"></i>
+                <h2>Welcome Back</h2>
+                <p>Sign in to manage your poultry farm.</p>
+            </div>
+            <form id="login-form">
+                <div id="login-error" class="error-banner" style="display: none;"></div>
+                <div class="input-group">
+                    <label><i class="fas fa-user"></i> Username</label>
+                    <input type="text" id="username" required placeholder="Enter your username">
+                </div>
+                <div class="input-group">
+                    <label><i class="fas fa-lock"></i> Password</label>
+                    <input type="password" id="password" required placeholder="Enter your password">
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">
+                    Sign In <i class="fas fa-arrow-right"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- MAIN APP SCREEN -->
+    <div id="app-screen" class="screen" style="display: none;">
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <i class="fas fa-egg text-accent"></i>
+                <span class="brand-text">AgriPro</span>
+            </div>
+            
+            <ul class="nav-links">
+                <li class="nav-item active" data-view="dashboard">
+                    <a href="#"><i class="fas fa-home"></i> <span>Dashboard</span></a>
+                </li>
+                <li class="nav-item" data-view="batches">
+                    <a href="#"><i class="fas fa-layer-group"></i> <span>Batches</span></a>
+                </li>
+                <li class="nav-item" data-view="reservations">
+                    <a href="#"><i class="fas fa-calendar-check"></i> <span>Reservations</span></a>
+                </li>
+            </ul>
+
+            <div class="sidebar-footer">
+                <div class="user-info">
+                    <div class="avatar"><i class="fas fa-user"></i></div>
+                    <div class="details">
+                        <span id="nav-username" class="name">User</span>
+                        <span id="nav-role" class="role">Role</span>
+                    </div>
+                </div>
+                <button id="logout-btn" class="btn btn-icon"><i class="fas fa-sign-out-alt"></i></button>
+            </div>
+        </nav>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <header class="topbar">
+                <h2 id="page-title">Dashboard</h2>
+                <div class="topbar-actions">
+                    <button class="btn btn-icon"><i class="fas fa-bell"></i></button>
+                </div>
+            </header>
+
+            <div class="content-wrapper" id="view-container">
+                <!-- Dynamic Views Rendered Here -->
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/api.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

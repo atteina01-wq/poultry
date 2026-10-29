@@ -1,0 +1,22 @@
+{
+    "name": "poultry/farm-management",
+    "description": "Integrated Poultry Farm Management System",
+    "type": "project",
+    "require": {
+        "php": ">=7.4",
+        "firebase/php-jwt": "^6.8"
+    },
+    "autoload": {
+        "psr-4": {
+            "Poultry\\": "src/"
+        }
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "policy": {
+            "advisories": {
+                "block": false
+            }
+        }
+    }
+}
