@@ -55,3 +55,4 @@ if ($phpFile && str_starts_with($phpFile, $baseDir) && file_exists($phpFile)) {
 
 http_response_code(404);
 echo "404 Not Found: " . htmlspecialchars($uri);
+
