@@ -39,6 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['portal_login'])) {
         $_SESSION['role'] = $user['role'];
         $_SESSION['customer_id'] = $user['customer_id'] ?? null;
         $role = strtolower($user['role'] ?? '');
+        session_write_close();
         header('Location: ' . ($role === 'integrator' ? 'reservations.php' : 'dashboard.php'));
         exit();
     } catch (Exception $e) {
@@ -117,7 +118,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['integrator_register']
         $_SESSION['full_name'] = $repName;
         $_SESSION['role'] = 'integrator';
         $_SESSION['customer_id'] = $customerId;
-
+        session_write_close();
         header('Location: reservations.php');
         exit();
     } catch (Exception $e) {

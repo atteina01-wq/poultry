@@ -34,6 +34,7 @@ class DbSessionHandler implements SessionHandlerInterface {
 
         $handler = new self($pdo);
         session_set_save_handler($handler, true);
+        session_register_shutdown();
         self::$registered = true;
     }
 
@@ -113,3 +114,4 @@ class DbSessionHandler implements SessionHandlerInterface {
         }
     }
 }
+
