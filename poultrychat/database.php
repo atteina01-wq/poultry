@@ -3,6 +3,9 @@
 if (file_exists(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
 }
+if (file_exists(__DIR__ . '/../src/autoload.php')) {
+    require_once __DIR__ . '/../src/autoload.php';
+}
 
 $host = class_exists('Poultry\Core\Config') ? \Poultry\Core\Config::get('DB_HOST', 'localhost') : (getenv('DB_HOST') ?: 'localhost');
 $port = class_exists('Poultry\Core\Config') ? \Poultry\Core\Config::get('DB_PORT', '3306') : (getenv('DB_PORT') ?: '3306');
@@ -27,6 +30,10 @@ try {
     $conn->exec("SET time_zone = '+08:00'");
 } catch(PDOException $e) {
     die("Database connection failed: " . htmlspecialchars($e->getMessage(), ENT_QUOTES, 'UTF-8'));
+}
+
+if (class_exists('Poultry\Core\DbSessionHandler')) {
+    \Poultry\Core\DbSessionHandler::register($conn);
 }
 
 // Global CSRF protection for all POST requests.

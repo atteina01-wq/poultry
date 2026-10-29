@@ -1,6 +1,18 @@
 <?php
 // Vercel Serverless Entry Router for Poultry Management System
 
+if (file_exists(__DIR__ . '/../vendor/autoload.php')) {
+    require_once __DIR__ . '/../vendor/autoload.php';
+}
+if (file_exists(__DIR__ . '/../src/autoload.php')) {
+    require_once __DIR__ . '/../src/autoload.php';
+}
+
+// Register Cloud Database Session Handler for Serverless persistence
+if (class_exists('Poultry\Core\DbSessionHandler')) {
+    \Poultry\Core\DbSessionHandler::register();
+}
+
 $uri = parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH);
 $uri = urldecode($uri);
 
@@ -26,18 +38,18 @@ if ($targetFile && str_starts_with($targetFile, $baseDir) && file_exists($target
     }
 
     $mimes = [
-        'css'  => 'text/css',
-        'js'   => 'application/javascript',
-        'json' => 'application/json',
-        'png'  => 'image/png',
-        'jpg'  => 'image/jpeg',
-        'jpeg' => 'image/jpeg',
-        'gif'  => 'image/gif',
-        'svg'  => 'image/svg+xml',
-        'ico'  => 'image/x-icon',
-        'woff' => 'font/woff',
-        'woff2'=> 'font/woff2',
-        'ttf'  => 'font/ttf',
+        'css'   => 'text/css',
+        'js'    => 'application/javascript',
+        'json'  => 'application/json',
+        'png'   => 'image/png',
+        'jpg'   => 'image/jpeg',
+        'jpeg'  => 'image/jpeg',
+        'gif'   => 'image/gif',
+        'svg'   => 'image/svg+xml',
+        'ico'   => 'image/x-icon',
+        'woff'  => 'font/woff',
+        'woff2' => 'font/woff2',
+        'ttf'   => 'font/ttf',
     ];
     $contentType = $mimes[$ext] ?? 'application/octet-stream';
     header("Content-Type: $contentType");
@@ -55,4 +67,3 @@ if ($phpFile && str_starts_with($phpFile, $baseDir) && file_exists($phpFile)) {
 
 http_response_code(404);
 echo "404 Not Found: " . htmlspecialchars($uri);
-
